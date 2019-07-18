@@ -9,11 +9,11 @@ script:
   - cmake ..
   - cmake --build .
   - mv ../ip_filter.tsv ip_filter.tsv
-  - cat ip_filter.tsv | ip_filter | md5sum
+  - cat ip_filter.tsv | ./ip_filter | md5sum
   - cmake --build . --target package
 
 deploy:
   provider: script
   skip_cleanup: true
   script:
-  - curl -T ip_filter-0.0.2-Linux.deb -uevgeny9042:$BINTRAY_API_KEY "https://api.bintray.com/content/rti/homework/homework01/0/ip_filter-0.0.2-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+  - curl -T ip_filter-0.0.1-Linux.deb -uevgeny9042:$BINTRAY_API_KEY "https://api.bintray.com/content/rti/homework/homework01/0/ip_filter-0.0.1-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
