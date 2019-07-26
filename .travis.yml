@@ -3,11 +3,15 @@ language: cpp
 compiler:
   - gcc
   
+before_script:
+  - sudo apt-get install libboost-test-dev -y
+
 script:
   - mkdir build
   - cd build
   - cmake ..
   - cmake --build .
+  - cmake --build . --target test
   - mv ../ip_filter.tsv ip_filter.tsv
   - cat ip_filter.tsv | ./ip_filter | md5sum
   - cmake --build . --target package
