@@ -30,7 +30,7 @@ BOOST_AUTO_TEST_CASE(test_split)
 
 BOOST_AUTO_TEST_CASE(test_filter)
 {
-  BOOST_CHECK(my_lib::filter(ip_pool, "10")  == std::vector<int>({0, 1, 2, 3, 4, 5, 6}));
+  BOOST_CHECK(my_lib::filter(ip_pool, "10")  == std::vector<int>({1, 1, 2, 3, 4, 5, 6}));
   BOOST_CHECK(my_lib::filter(ip_pool, "192") == std::vector<int>({7, 8, 9}));
 }
 
