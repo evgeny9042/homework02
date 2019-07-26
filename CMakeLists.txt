@@ -9,8 +9,6 @@ endif()
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-configure_file(version.h.in ${CMAKE_CURRENT_BINARY_DIR}/my_version.h)
-
 add_executable(ip_filter  main.cpp lib.cpp)
 add_executable(test_filter test.cpp lib.cpp)
 
