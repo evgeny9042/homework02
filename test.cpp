@@ -33,7 +33,7 @@ BOOST_AUTO_TEST_CASE(test_split)
   BOOST_CHECK(my_lib::split("11.22", '.') == my_lib::ip_t({"11", "22"}));
 
   BOOST_CHECK(my_lib::split("10.5.79.165", '.')    == my_lib::ip_t({"10", "5", "79", "165"}));
-  BOOST_CHECK(my_lib::split("192.198.80.171", '.') == my_lib::ip_t({"192", "168", "80", "171"}));
+  BOOST_CHECK(my_lib::split("192.198.80.171", '.') == my_lib::ip_t({"192", "198", "80", "171"}));
 
   BOOST_CHECK(my_lib::split("10.5.79.165\t192.198.80.171", '\t') == my_lib::ip_t({"10.5.79.165", "192.198.80.171"}));
 }
@@ -46,8 +46,8 @@ BOOST_AUTO_TEST_CASE(test_filter)
 
 BOOST_AUTO_TEST_CASE(test_filter_any)
 {
-  BOOST_CHECK(my_lib::filter(ip_pool, "171") == std::vector<int>({6, 7, 9}));
-  BOOST_CHECK(my_lib::filter(ip_pool, "80")  == std::vector<int>({9}));
+  BOOST_CHECK(my_lib::filter_any(ip_pool, "171") == std::vector<int>({6, 7, 9}));
+  BOOST_CHECK(my_lib::filter_any(ip_pool, "80")  == std::vector<int>({9}));
 }
 
 BOOST_AUTO_TEST_SUITE_END()
