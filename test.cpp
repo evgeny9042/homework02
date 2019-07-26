@@ -1,12 +1,42 @@
 #define BOOST_TEST_MODULE test_filter
 
 #include <boost/test/unit_test.hpp>
+#include "lib.h"
 
-BOOST_AUTO_TEST_SUITE(test_version)
 
-BOOST_AUTO_TEST_CASE(test_valid_version)
+static my_lib::ip_pool_t ip_pool = {
+
+  {"10","5","79","165"},
+  {"10","5","79","166"},
+  {"10","5","79","167"},
+  {"10","5","79","168"},
+  {"10","5","79","169"},
+  {"10","5","79","170"},
+  {"10","5","79","171"},
+
+  {"192","168","79","171"},
+  {"192","168","79","172"},
+
+  {"192","168","80","171"},
+};
+
+
+BOOST_AUTO_TEST_SUITE(test_lib)
+
+BOOST_AUTO_TEST_CASE(test_split)
 {
-    //BOOST_CHECK(version() > 0);
-}
 
 }
+
+BOOST_AUTO_TEST_CASE(test_filter)
+{
+  BOOST_CHECK(my_lib::filter(ip_pool, "10")  == std::vector<int>({0, 1, 2, 3, 4, 5, 6}));
+  BOOST_CHECK(my_lib::filter(ip_pool, "192") == std::vector<int>({7, 8, 9}));
+}
+
+BOOST_AUTO_TEST_CASE(test_filter_any)
+{
+  //BOOST_CHECK(version() > 0);
+}
+
+BOOST_AUTO_TEST_SUITE_END()
