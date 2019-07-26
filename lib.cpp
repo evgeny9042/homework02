@@ -1,6 +1,6 @@
 
 #include "lib.h"
-
+#include <algorithm>
 #include <cassert>
 
 namespace my_lib {
